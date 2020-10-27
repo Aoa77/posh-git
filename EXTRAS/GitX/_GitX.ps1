@@ -1,8 +1,3 @@
-Push-Location;
-Set-Location $PSScriptRoot;
-Set-Location "..\..\";
-Import-Module ".\posh-git.psd1" -Force;
-
 [string] $Global:GITX_MAIN_BRANCH = "master";
 git config --global pager.branch false;
 git config --global diff.tool bc;
