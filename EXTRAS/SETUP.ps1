@@ -134,6 +134,7 @@ function Write-Sideways {
 }
 #-------------------------------------------------------------------------------------------
 Write-HR;
+[string] $modroot = "$\";
 #-------------------------------------------------------------------------------------------
 Get-ChildItem -Path $PSScriptRoot -Filter "*.ps1" -Recurse | ForEach-Object {
     if (!$_.Name.Equals("SETUP.ps1") -and !$_.Name.StartsWith("_")) {
