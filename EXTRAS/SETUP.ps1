@@ -134,10 +134,9 @@ function Write-Sideways {
 }
 #-------------------------------------------------------------------------------------------
 Write-HR;
-[string] $mods_to_load = "$PSScriptRoot\src\extras";
 #-------------------------------------------------------------------------------------------
-Get-ChildItem -Path $mods_to_load -Filter "*.ps1" -Recurse | ForEach-Object {
-    if (!$_.Name.StartsWith("_")) {
+Get-ChildItem -Path $PSScriptRoot -Filter "*.ps1" -Recurse | ForEach-Object {
+    if (!$_.Name.Equals("SETUP.ps1") -and !$_.Name.StartsWith("_")) {
         $out = $_.Name.Split('.')[0];
         Write-Sideways -out $out -fg DarkMagenta;
         Import-Module $_.FullName -Force;
@@ -148,7 +147,7 @@ Write-NewLine;
 Write-HR;
 Reset-SidewaysBuffer;
 #-------------------------------------------------------------------------------------------
-Get-ChildItem -Path $mods_to_load -Filter "*.ps1" -Recurse | ForEach-Object {
+Get-ChildItem -Path $PSScriptRoot -Filter "*.ps1" -Recurse | ForEach-Object {
     if ($_.Name.StartsWith("_")) {
         $out = "init$($_.Name.Split('.')[0])";
         Write-Sideways -out $out -fg "Blue";
