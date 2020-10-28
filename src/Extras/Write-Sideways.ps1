@@ -1,25 +1,20 @@
 
-###############################################################################
-###############################################################################
-function Reset-SidewaysBuffer {
-    $Global:SIDEWAYS_BUFFER = $Global:BUFFER_WIDTH;
-}
-###############################################################################
-###############################################################################
-function Init-ConsoleBuffer {
-    $Global:BUFFER_WIDTH = ($Host.UI.RawUI.WindowSize.Width - 3);
-    $Global:SIDEWAYS_LIST_PADDING = 2;
-    Reset-SidewaysBuffer;
-}
+
 ###############################################################################
 ###############################################################################
 [int] $Global:BUFFER_WIDTH = ($Host.UI.RawUI.WindowSize.Width - 3);
 [int] $Global:SIDEWAYS_LIST_PADDING = 2;
 [int] $Global:SIDEWAYS_BUFFER = 0;
-###############################################################################
-Init-ConsoleBuffer;
-###############################################################################
 #------------------------------------------------------------------------------
+function Init-ConsoleBuffer {
+    $Global:BUFFER_WIDTH = ($Host.UI.RawUI.WindowSize.Width - 3);
+    $Global:SIDEWAYS_LIST_PADDING = 2;
+    Reset-SidewaysBuffer;
+}
+#------------------------------------------------------------------------------
+function Reset-SidewaysBuffer {
+    $Global:SIDEWAYS_BUFFER = $Global:BUFFER_WIDTH;
+}
 #------------------------------------------------------------------------------
 function Write-Sideways {
     [CmdletBinding()]
@@ -50,3 +45,8 @@ function Write-Sideways {
     Write-Host $out -ForegroundColor $fg -BackgroundColor $bg -NoNewline;
     Write-CharRepeater -ch " " -count $Global:SIDEWAYS_LIST_PADDING;
 }
+###############################################################################
+###############################################################################
+Init-ConsoleBuffer;
+###############################################################################
+###############################################################################

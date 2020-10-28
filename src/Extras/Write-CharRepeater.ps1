@@ -1,4 +1,3 @@
-
 function Write-CharRepeater {
     [CmdletBinding()]
     Param (
