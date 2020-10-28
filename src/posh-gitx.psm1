@@ -16,8 +16,9 @@ Get-ChildItem -Path "$PSScriptRoot\GitX" -Filter "*.ps1" -Recurse | ForEach-Obje
 Write-NewLine;
 Write-HR;
 Reset-SidewaysBuffer;
-Start-Sleep -Milliseconds 2500;
+Start-Sleep -Milliseconds 1;
 Clear-Host;
 #-------------------------------------------------------------------------------------------
+GitX-Config;
 Write-Splash "Welcome to posh-gitX :)";
 #-------------------------------------------------------------------------------------------
