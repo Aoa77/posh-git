@@ -4,6 +4,7 @@
  function GitX-Clean {
     [CmdletBinding()]
     Param (
+        [switch] $sub,
         [string] $flags
     )
     if ($flags.Length -lt 1) {
