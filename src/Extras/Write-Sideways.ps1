@@ -10,6 +10,10 @@ function Init-ConsoleBuffer {
     $Global:BUFFER_WIDTH = ($Host.UI.RawUI.WindowSize.Width - 3);
     $Global:SIDEWAYS_LIST_PADDING = 2;
     Reset-SidewaysBuffer;
+
+    $BUFF = $host.UI.RawUI.BufferSize;
+    $host.UI.RawUI.BufferSize = `
+        New-Object System.Management.Automation.Host.Size($BUFF.Width, 5000);
 }
 #------------------------------------------------------------------------------
 function Reset-SidewaysBuffer {

@@ -1,10 +1,10 @@
 ############################################################################################################
-# Get-ConsoleAsHtml.ps1
-########
+# Console-DumpToHtml.ps1
+########---------------------------------------------------------------------
 # source: https://devblogs.microsoft.com/powershell/colorized-capture-of-console-screen-in-html-and-rtf/
 ###########################################
 # The script captures console screen buffer up to the current cursor position and returns it in HTML format.
-#
+#-------------------
 #
 
 function AssertConsoleHost {
@@ -50,12 +50,14 @@ function Append-HtmlBreak {
 }
 
 
-function Get-ConsoleAsHtml([string] $outFile) {
+function Console-DumpToHtml([string] $logFile, [string] $prefix) {
 
     AssertConsoleHost;
-    if ([string]::IsNullOrWhiteSpace($outFile)) {
-        $outFile = "$PSScriptRoot\Get-ConsoleAsHtml.output";
+    if ([string]::IsNullOrWhiteSpace($logFile)) {
+        $logFile = "$(Get-Location)\.pslogs\$($prefix.Replace(" ", "-"))_$([System.DateTime]::UtcNow.Ticks).html";
     }
+    $logFileInfo = [System.IO.FileInfo]::new($logFile);
+
     # Initialize the HTML string builder.
     $htmlBuilder = New-Object system.text.stringbuilder;
 
@@ -117,12 +119,9 @@ function Get-ConsoleAsHtml([string] $outFile) {
 
     # Append HTML ending tag.
     [void]$htmlBuilder.Append("</pre></div></body></html>");
-
-    if (!$outFile.Trim().ToLowerInvariant().EndsWith(".html")) {
-        $outFile += ".html";
-    }
-    [System.IO.File]::WriteAllText($outFile, $htmlBuilder.ToString());
-    return $outFile;
+    $logFileInfo.Directory.Create();
+    [System.IO.File]::WriteAllText($logFileInfo.FullName, $htmlBuilder.ToString());
+    return $logFileInfo.FullName;
 }
 
 
