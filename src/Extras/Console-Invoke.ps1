@@ -1,4 +1,4 @@
-function Invoke-Plog([string] $command, [string] $logFile) {
+function Console-Invoke([string] $command, [string] $logFile) {
     Clear-Host;
     Write-Host $(Get-Location);
     Write-Host "";
