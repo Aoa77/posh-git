@@ -51,7 +51,6 @@ function Append-HtmlBreak {
 
 
 function Console-DumpToHtml([string] $logFile, [string] $prefix) {
-
     AssertConsoleHost;
     if ([string]::IsNullOrWhiteSpace($logFile)) {
         $logFile = "$(Get-Location)\.pslogs\$($prefix.Replace(" ", "-"))_$([System.DateTime]::UtcNow.Ticks).html";
@@ -68,8 +67,8 @@ function Console-DumpToHtml([string] $logFile, [string] $prefix) {
     [void]$htmlBuilder.Append("<style>");
 
     [void]$htmlBuilder.Append("* {margin:0;font-family: 'Cascadia Code', monospace;font-size:8pt;}");
-    [void]$htmlBuilder.Append("body {background-color:#052705;text-align:center;}");
-    [void]$htmlBuilder.Append(".container {display:inline-block;text-align:left;margin:42px;padding:21px;background-color:#000000;border:solid 2px #00ff00;}");
+    [void]$htmlBuilder.Append("body {background-color:#052705;text-align:left;}");
+    [void]$htmlBuilder.Append(".container {display:inline-block;text-align:left;margin:0px;padding:21px;background-color:#000000;border:solid 2px #00ff00;}");
     [void]$htmlBuilder.Append(".container pre {display:inline-block;text-align:left;}");
     [void]$htmlBuilder.Append("</style></head><body><div class='container'><pre>");
 
