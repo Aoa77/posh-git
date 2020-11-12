@@ -50,11 +50,8 @@ function Append-HtmlBreak {
 }
 
 
-function Console-DumpToHtml([string] $logFile, [string] $prefix) {
+function Console-DumpToHtml([string] $logFile) {
     AssertConsoleHost;
-    if ([string]::IsNullOrWhiteSpace($logFile)) {
-        $logFile = "$(Get-Location)\.pslogs\$($prefix.Replace(" ", "-"))_$([System.DateTime]::UtcNow.Ticks).html";
-    }
     $logFileInfo = [System.IO.FileInfo]::new($logFile);
 
     # Initialize the HTML string builder.
@@ -120,7 +117,6 @@ function Console-DumpToHtml([string] $logFile, [string] $prefix) {
     [void]$htmlBuilder.Append("</pre></div></body></html>");
     $logFileInfo.Directory.Create();
     [System.IO.File]::WriteAllText($logFileInfo.FullName, $htmlBuilder.ToString());
-    return $logFileInfo.FullName;
 }
 
 
