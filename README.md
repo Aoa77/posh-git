@@ -1,4 +1,4 @@
-# posh-git
+# posh-gitX
 
 [![Join the chat at https://gitter.im/dahlbyk/posh-git][gitter-img]][gitter]
 [![PowerShell Gallery][psgallery-img]][psgallery-site]
