@@ -1,5 +1,5 @@
 ############################################################################################################
-# Console-DumpToHtml.ps1
+# Console-Snapshop.ps1
 ########---------------------------------------------------------------------
 # source: https://devblogs.microsoft.com/powershell/colorized-capture-of-console-screen-in-html-and-rtf/
 ###########################################
@@ -7,14 +7,6 @@
 #-------------------
 #
 
-function AssertConsoleHost {
-
-    # Check the host name and exit if the host is not the Windows PowerShell console host.
-    if ($host.Name -ne "ConsoleHost") {
-        Write-Host -ForegroundColor Red "This script runs only in the console host. You cannot run this script in $($host.Name)."
-        exit -1
-    }
-}
 
 # The Windows PowerShell console host redefines DarkYellow and DarkMagenta colors and uses them as defaults.
 # The redefined colors do not correspond to the color names used in HTML, so they need to be mapped to digital color codes.
@@ -22,35 +14,11 @@ function AssertConsoleHost {
 function Normalize-HtmlColor ($color) {
     if ($color -eq "DarkYellow") { $color = "#eeedf0" }
     if ($color -eq "DarkMagenta") { $color = "#012456" }
+    if ($color -eq "DarkBlue") { $color = "#0052CD" }
     return $color
 }
 
-# Create an HTML span from text using the named console colors.
-#
-function Make-HtmlSpan ($text, $forecolor = "DarkYellow", $backcolor = "DarkMagenta") {
-    $forecolor = Normalize-HtmlColor $forecolor
-    $backcolor = Normalize-HtmlColor $backcolor
-
-    # You can also add font-weight:bold tag here if you want a bold font in output.
-    return "<span style=`"color:$forecolor; background:$backcolor`">$text</span>"
-}
-
-# Generate an HTML span and append it to HTML string builder
-#
-function Append-HtmlSpan {
-    $spanText = $spanBuilder.ToString()
-    $spanHtml = Make-HtmlSpan $spanText $currentForegroundColor $currentBackgroundColor
-    [void]$htmlBuilder.Append($spanHtml)
-}
-
-# Append line break to HTML builder
-#
-function Append-HtmlBreak {
-    [void]$htmlBuilder.Append("<br>")
-}
-
-
-function Console-DumpToHtml([string] $logFile) {
+function Console-Snapshop([string] $logFile) {
     AssertConsoleHost;
     $logFileInfo = [System.IO.FileInfo]::new($logFile);
 
@@ -64,7 +32,7 @@ function Console-DumpToHtml([string] $logFile) {
     [void]$htmlBuilder.Append("<style>");
 
     [void]$htmlBuilder.Append("* {margin:0;font-family: 'Cascadia Code', monospace;font-size:8pt;}");
-    [void]$htmlBuilder.Append("body {background-color:#052705;text-align:left;}");
+    [void]$htmlBuilder.Append("body {background-color:#003366;text-align:left;}");
     [void]$htmlBuilder.Append(".container {display:inline-block;text-align:left;margin:0px;padding:21px;background-color:#000000;border:solid 2px #00ff00;}");
     [void]$htmlBuilder.Append(".container pre {display:inline-block;text-align:left;}");
     [void]$htmlBuilder.Append("</style></head><body><div class='container'><pre>");
@@ -120,4 +88,39 @@ function Console-DumpToHtml([string] $logFile) {
 }
 
 
+
+
+function AssertConsoleHost {
+
+    # Check the host name and exit if the host is not the Windows PowerShell console host.
+    if ($host.Name -ne "ConsoleHost") {
+        Write-Host -ForegroundColor Red "This script runs only in the console host. You cannot run this script in $($host.Name)."
+        exit -1
+    }
+}
+
+
+# Create an HTML span from text using the named console colors.
+#
+function Make-HtmlSpan ($text, $forecolor = "DarkYellow", $backcolor = "DarkMagenta") {
+    $forecolor = Normalize-HtmlColor $forecolor
+    $backcolor = Normalize-HtmlColor $backcolor
+
+    # You can also add font-weight:bold tag here if you want a bold font in output.
+    return "<span style=`"color:$forecolor; background:$backcolor`">$text</span>"
+}
+
+# Generate an HTML span and append it to HTML string builder
+#
+function Append-HtmlSpan {
+    $spanText = $spanBuilder.ToString()
+    $spanHtml = Make-HtmlSpan $spanText $currentForegroundColor $currentBackgroundColor
+    [void]$htmlBuilder.Append($spanHtml)
+}
+
+# Append line break to HTML builder
+#
+function Append-HtmlBreak {
+    [void]$htmlBuilder.Append("<br>")
+}
 

@@ -1,11 +1,18 @@
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
-function Write-Splash([string] $msg) {
+function Write-Splash([string] $msg, [switch] $invert) {
+    
+    if ($invert.IsPresent) {
+        Write-HR;
+    }
     Write-Host "== " -ForegroundColor DarkBlue -NoNewline;
     Write-Host $msg -ForegroundColor Cyan -NoNewline;
     Write-Host " ==" -ForegroundColor DarkBlue;
-    Write-HR;
+    
+    if (!$invert.IsPresent) {
+        Write-HR;
+    }
 }
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
