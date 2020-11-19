@@ -19,8 +19,9 @@ function Normalize-HtmlColor ($color) {
 }
 
 function Console-Snapshop([string] $logFile) {
+    ###################
     AssertConsoleHost;
-    $logFileInfo = [System.IO.FileInfo]::new($logFile);
+    ###################
 
     # Initialize the HTML string builder.
     $htmlBuilder = New-Object system.text.stringbuilder;
@@ -83,15 +84,14 @@ function Console-Snapshop([string] $logFile) {
 
     # Append HTML ending tag.
     [void]$htmlBuilder.Append("</pre></div></body></html>");
-    $logFileInfo.Directory.Create();
-    [System.IO.File]::WriteAllText($logFileInfo.FullName, $htmlBuilder.ToString());
+    #throw $logFile;
+    [void] (Set-Content -Path $logFile -Force -Value ($htmlBuilder.ToString()));
 }
 
 
 
 
 function AssertConsoleHost {
-
     # Check the host name and exit if the host is not the Windows PowerShell console host.
     if ($host.Name -ne "ConsoleHost") {
         Write-Host -ForegroundColor Red "This script runs only in the console host. You cannot run this script in $($host.Name)."
