@@ -1,12 +1,9 @@
-############################################################################################################
+#######################
 # Console-Snapshop.ps1
-########---------------------------------------------------------------------
+#######################
 # source: https://devblogs.microsoft.com/powershell/colorized-capture-of-console-screen-in-html-and-rtf/
-###########################################
 # The script captures console screen buffer up to the current cursor position and returns it in HTML format.
-#-------------------
 #
-
 
 # The Windows PowerShell console host redefines DarkYellow and DarkMagenta colors and uses them as defaults.
 # The redefined colors do not correspond to the color names used in HTML, so they need to be mapped to digital color codes.
