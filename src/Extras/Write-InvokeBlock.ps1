@@ -1,16 +1,13 @@
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
-function Write-HR {
-    Write-CharRepeater "-" $Global:BUFFER_WIDTH -fg "DarkGray";
+function Write-InvokeBlock([ScriptBlock] $sb, [Object[]] $argList) {
+    Write-HR-Half;
+    Write-Host $sb.ToString().Replace("        ", "") -ForegroundColor Green;
+    Write-Host $argList -ForegroundColor Yellow;
+    Write-HR-Half;
     Write-NewLine;
-}
-#-----------------------------------------------------------------------
-#-----------------------------------------------------------------------
-#-----------------------------------------------------------------------
-function Write-HR-Half {
-    Write-CharRepeater "-" ($Global:BUFFER_WIDTH / 2) -fg "DarkGreen";
-    Write-NewLine;
+    Invoke-Command -ScriptBlock $sb -ArgumentList $argList;
 }
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
