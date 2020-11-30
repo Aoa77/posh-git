@@ -1,14 +1,11 @@
 
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
-#-----------------------------------------------------------------------
-function PROMPT {
-    Init-ConsoleBuffer;
-    Write-NewLine 2;
+function Write-Gitx-Prompt {
+
     [string]$loc = (Get-Location);
     Write-Host $loc -ForegroundColor "DarkGreen";
     Write-HR;
-
 
     $repo = (GitX-Util-Repo-Root $loc);
     if ($null -ne $repo) {
@@ -21,6 +18,15 @@ function PROMPT {
         Write-NewLine;
         Write-HR;
     }
+    
+    return $loc;
+}
+#-----------------------------------------------------------------------
+function PROMPT {
+    Init-ConsoleBuffer;
+    Write-NewLine 2;
+
+    $loc = Write-Gitx-Prompt;
 
     [int] $max = 5;
     [int] $count = 0;
