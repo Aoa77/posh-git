@@ -29,7 +29,7 @@ function Console-Snapshop([string] $logFile) {
     [void]$htmlBuilder.Append("<script src=`"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js`"></script>");
     [void]$htmlBuilder.Append("<style>");
 
-    [void]$htmlBuilder.Append("* {margin:0;font-family: 'Cascadia Code', monospace;font-size:8pt;}");
+    [void]$htmlBuilder.Append("* {margin:0;font-family: 'Cascadia Code', monospace;font-size:13pt;}");
     [void]$htmlBuilder.Append("body {background-color:#003366;text-align:left;}");
     [void]$htmlBuilder.Append(".container {display:inline-block;text-align:left;margin:0px;padding:21px;background-color:#000000;border:solid 2px #00ff00;}");
     [void]$htmlBuilder.Append(".container pre {display:inline-block;text-align:left;}");
@@ -37,7 +37,8 @@ function Console-Snapshop([string] $logFile) {
 
     # Grab the console screen buffer contents using the Host console API.
     $bufferWidth = $host.ui.rawui.BufferSize.Width;
-    $bufferHeight = $host.ui.rawui.CursorPosition.Y;
+    $bufferHeight = 1200; #// ($host.ui.rawui.BufferSize.Height / 2);
+    # $bufferHeight = $host.ui.rawui.CursorPosition.Y;
     $rec = New-Object System.Management.Automation.Host.Rectangle 0, 0, ($bufferWidth – 1), $bufferHeight;
     $buffer = $host.ui.rawui.GetBufferContents($rec);
 
