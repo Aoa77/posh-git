@@ -29,7 +29,7 @@ function Console-Snapshop([string] $logFile) {
     [void]$htmlBuilder.Append("<script src=`"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js`"></script>");
     [void]$htmlBuilder.Append("<style>");
 
-    [void]$htmlBuilder.Append("* {margin:0;font-family: 'Cascadia Code', monospace;font-size:13pt;}");
+    [void]$htmlBuilder.Append("* {margin:0;font-family: 'Cascadia Code', monospace;font-size:7pt;}");
     [void]$htmlBuilder.Append("body {background-color:#003366;text-align:left;}");
     [void]$htmlBuilder.Append(".container {display:inline-block;text-align:left;margin:0px;padding:21px;background-color:#000000;border:solid 2px #00ff00;}");
     [void]$htmlBuilder.Append(".container pre {display:inline-block;text-align:left;}");
