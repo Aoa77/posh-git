@@ -9,7 +9,7 @@ function Write-HR {
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
 function Write-HR-DarkGreen {
-    Write-CharRepeater "-" ($Global:BUFFER_WIDTH / 2) -fg "DarkGreen";
+    Write-CharRepeater "-" $Global:BUFFER_WIDTH -fg "DarkGreen";
     Write-NewLine;
 }
 #-----------------------------------------------------------------------
