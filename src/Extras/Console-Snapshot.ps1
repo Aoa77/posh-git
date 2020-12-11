@@ -22,7 +22,7 @@ function Console-Snapshop([string] $logFile, [string] $fontSize) {
 
     # default styles
     if ($fontSize.length -eq 0) {
-        $fontSize = "8pt";
+        $fontSize = "9pt";
     }
 
     # Initialize the HTML string builder.
