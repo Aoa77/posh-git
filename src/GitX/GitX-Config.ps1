@@ -16,7 +16,7 @@ function GitX-Config {
 
     Set-Alias -Force -Option AllScope -Scope Global -Value GitX-Branch -Name "gb";
     Set-Alias -Force -Option AllScope -Scope Global -Value GitX-Branch-All -Name "gba";
-    Set-Alias -Force -Option AllScope -Scope Global -Value GitX-Branch-Cleanup-Local -Name "gbc";
+    Set-Alias -Force -Option AllScope -Scope Global -Value GitX-Branch-Purge -Name "gbp";
     Set-Alias -Force -Option AllScope -Scope Global -Value GitX-Branch-Remote -Name "gbr";
     Set-Alias -Force -Option AllScope -Scope Global -Value GitX-Branch-Verbose -Name "gbv";
 
