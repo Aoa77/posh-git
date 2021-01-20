@@ -18,10 +18,14 @@ function Console-Menu () {
             }
         }
         $KeyInput = $host.ui.rawui.readkey("NoEcho,IncludeKeyDown").virtualkeycode;
+        #Write-Host "`$KeyInput: $KeyInput";
         switch ($KeyInput) {
             13 {
                 $EnterPressed = $true
                 return $Selection;
+            }
+            27 {
+                return -1;
             }
             38 {
                 if ($Selection -eq 0) {
