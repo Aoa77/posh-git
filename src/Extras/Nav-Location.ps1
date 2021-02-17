@@ -26,6 +26,14 @@ function Nav-Location {
         }
     }
 
+    $special = "~\AppData\Roaming\Code\User";
+    $pindices.Add($special);
+    $places.Add($special, $special);
+
+    $special = "C:\Windows\System32\drivers\etc";
+    $pindices.Add($special);
+    $places.Add($special, $special);
+
     while ($true) {
         $option = (Console-Menu "places" ("git repositories", "vscode workspaces", "vs solutions"));
         if ($option -lt 0) {

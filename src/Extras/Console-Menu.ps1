@@ -20,11 +20,11 @@ function Console-Menu () {
         $KeyInput = $host.ui.rawui.readkey("NoEcho,IncludeKeyDown").virtualkeycode;
         #Write-Host "`$KeyInput: $KeyInput";
         switch ($KeyInput) {
-            13 {
+            { $_ -in (13, 39) } {
                 $EnterPressed = $true
                 return $Selection;
             }
-            27 {
+            { $_ -in (27, 37) } {
                 return -1;
             }
             38 {
