@@ -18,7 +18,7 @@ function Write-Gitx-Prompt {
         Write-NewLine;
         Write-HR;
     }
-    
+
     return $loc;
 }
 #-----------------------------------------------------------------------
@@ -71,7 +71,7 @@ function PROMPT {
     if ($files.Count -gt 0 -OR $dirs.Count -gt 0) {
         Write-HR;
     }
-    Write-Host '>>' -NoNewline;
+    Write-Host '>:' -NoNewline;
     return ' ';
 }
 #-------------------------------------------------------------------------------------------
