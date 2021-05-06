@@ -13,7 +13,7 @@ function Init-ConsoleBuffer {
 
     $BUFF = $host.UI.RawUI.BufferSize;
     $host.UI.RawUI.BufferSize = `
-        New-Object System.Management.Automation.Host.Size($BUFF.Width, 5000);
+        New-Object System.Management.Automation.Host.Size($BUFF.Width, $BUFF.Height);
 }
 #------------------------------------------------------------------------------
 function Reset-SidewaysBuffer {

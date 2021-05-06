@@ -42,8 +42,7 @@ function Console-Snapshop([string] $logFile, [string] $fontSize) {
 
     # Grab the console screen buffer contents using the Host console API.
     $bufferWidth = $host.ui.rawui.BufferSize.Width;
-    $bufferHeight = 1200; #// ($host.ui.rawui.BufferSize.Height / 2);
-    # $bufferHeight = $host.ui.rawui.CursorPosition.Y;
+    $bufferHeight = $host.ui.rawui.BufferSize.Height; // TODO, find a way to early out so this dont take so long
     $rec = New-Object System.Management.Automation.Host.Rectangle 0, 0, ($bufferWidth – 1), $bufferHeight;
     $buffer = $host.ui.rawui.GetBufferContents($rec);
 
