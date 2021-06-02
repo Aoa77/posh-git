@@ -14,7 +14,7 @@ function GitX-Remote {
     if ([string]::IsNullOrWhiteSpace($branch)) {
         $branch = (git rev-parse --abbrev-ref HEAD);
     }
-    Write-NewLine 2;
+    WriteX-NewLine 2;
     [string] $remote = (git config --get remote.origin.url);
     $github = [System.Text.RegularExpressions.Regex]::Split($remote, "github.com:");
     if ($github.Length -eq 2) {

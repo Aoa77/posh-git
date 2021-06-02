@@ -2,8 +2,8 @@
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
 function GitX-Branch-Verbose {
-    Write-NewLine;
-    Write-Splash "git branch -avv";
+    WriteX-NewLine;
+    WriteX-Splash "git branch -avv";
     git branch -avv;
 }
 #-----------------------------------------------------------------------

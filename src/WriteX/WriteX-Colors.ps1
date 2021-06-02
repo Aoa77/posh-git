@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
-function Write-Colors {
+function WriteX-Colors {
     Write-Host "Black" -ForegroundColor Black;
     Write-Host "Blue" -ForegroundColor Blue;
     Write-Host "Cyan" -ForegroundColor Cyan;

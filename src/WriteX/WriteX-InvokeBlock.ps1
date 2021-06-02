@@ -1,12 +1,12 @@
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
-function Write-InvokeBlock([ScriptBlock] $sb, [Object[]] $argList) {
-    Write-HR-DarkGreen;
+function WriteX-InvokeBlock([ScriptBlock] $sb, [Object[]] $argList) {
+    WriteX-HR-DarkGreen;
     Write-Host $sb.ToString().Replace("        ", "") -ForegroundColor Green;
     Write-Host $argList -ForegroundColor Yellow;
-    Write-HR-DarkGreen;
-    Write-NewLine;
+    WriteX-HR-DarkGreen;
+    WriteX-NewLine;
     Invoke-Command -ScriptBlock $sb -ArgumentList $argList;
 }
 #-----------------------------------------------------------------------

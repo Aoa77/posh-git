@@ -6,8 +6,8 @@ function GitX-Fetch {
     Param (
         [switch] $prune_local
     )
-    Write-NewLine;
-    Write-Splash "git fetch --all --prune --tags";
+    WriteX-NewLine;
+    WriteX-Splash "git fetch --all --prune --tags";
     git fetch --all --prune --tags;
     $regex = [System.Text.RegularExpressions.Regex]::new("^(.*?)\[origin/(.*?): gone\](.*?)$", [System.Text.RegularExpressions.RegexOptions]::Multiline);
 
@@ -18,8 +18,8 @@ function GitX-Fetch {
         };
     }
     if ($to_prune.Count -gt 0) {
-        Write-NewLine;
-        Write-Splash "Local Orphaned Branches";
+        WriteX-NewLine;
+        WriteX-Splash "Local Orphaned Branches";
         $to_prune | ForEach-Object {
             Write-Host "- " -ForegroundColor "Gray" -NoNewline;
             Write-Host $_ -ForegroundColor "Yellow" -NoNewline;
@@ -27,7 +27,7 @@ function GitX-Fetch {
                 git branch -D $_;
                 Write-Host " *** PRUNED ***" -ForegroundColor "Red" -NoNewline;
             }
-            Write-NewLine;
+            WriteX-NewLine;
         }
     }
     GitX-Branch-All;

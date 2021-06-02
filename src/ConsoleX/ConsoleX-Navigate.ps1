@@ -1,4 +1,4 @@
-function Nav-Location {
+function ConsoleX-Navigate.ps1{
     [CmdletBinding()]
     Param (
         [Parameter()]
@@ -35,13 +35,13 @@ function Nav-Location {
     $places.Add($special, $special);
 
     while ($true) {
-        $option = (Console-Menu "places" ("git repositories", "vscode workspaces", "vs solutions"));
+        $option = (ConsoleX-Menu "places" ("git repositories", "vscode workspaces", "vs solutions"));
         if ($option -lt 0) {
             break;
         }
         switch ($option) {
             0 {
-                $pindex = (Console-Menu "git repositories" $pindices.ToArray());
+                $pindex = (ConsoleX-Menu "git repositories" $pindices.ToArray());
                 if ($pindex -lt 0) {
                     break;
                 }
@@ -84,7 +84,7 @@ function menuList([System.Collections.Generic.Dictionary[string, string]] $place
             $workspaces.Add($key, $_.FullName);
         };
     };
-    $windex = (Console-Menu $title $windices.ToArray());
+    $windex = (ConsoleX-Menu $title $windices.ToArray());
     if ($windex -lt 0) {
         return "";
     }
@@ -93,4 +93,17 @@ function menuList([System.Collections.Generic.Dictionary[string, string]] $place
     Push-Location;
     Set-Location (GitX-Util-Repo-Root $directory);
     return $workspace;
+}
+<#
+<\\-- augment common aliases --//>
+#>
+Remove-Item alias:cd -Force;
+function cd([string] $location) {
+    ConsoleX-Navigate.ps1-LOCATION $location;
+}
+function bd() {
+    ConsoleX-Navigate.ps1-BACK;
+}
+function lsf() {
+    Get-ChildItem -Force;
 }

@@ -6,21 +6,21 @@
 [int] $Global:SIDEWAYS_LIST_PADDING = 2;
 [int] $Global:SIDEWAYS_BUFFER = 0;
 #------------------------------------------------------------------------------
-function Init-ConsoleBuffer {
+function WriteX-SidewaysBuffer-Init {
     $Global:BUFFER_WIDTH = ($Host.UI.RawUI.WindowSize.Width - 3);
     $Global:SIDEWAYS_LIST_PADDING = 2;
-    Reset-SidewaysBuffer;
+    WriteX-SidewaysBuffer-Reset;
 
     $BUFF = $host.UI.RawUI.BufferSize;
     $host.UI.RawUI.BufferSize = `
         New-Object System.Management.Automation.Host.Size($BUFF.Width, $BUFF.Height);
 }
 #------------------------------------------------------------------------------
-function Reset-SidewaysBuffer {
+function WriteX-SidewaysBuffer-Reset {
     $Global:SIDEWAYS_BUFFER = $Global:BUFFER_WIDTH;
 }
 #------------------------------------------------------------------------------
-function Write-Sideways {
+function WriteX-Sideways {
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory = $true)]
@@ -31,26 +31,26 @@ function Write-Sideways {
         [Parameter(Mandatory = $false)]
         [string] $bg
     )
-    $fg = Set-Color -value $fg -fg;
-    $bg = Set-Color -value $bg -bg;
+    $fg = WriteX-SetColor -value $fg -fg;
+    $bg = WriteX-SetColor -value $bg -bg;
     $padded_length = ($out.Length + $Global:SIDEWAYS_LIST_PADDING);
     $Global:SIDEWAYS_BUFFER -= $padded_length;
     if ($Global:SIDEWAYS_BUFFER -lt 0) {
-        Write-NewLine;
-        Reset-SidewaysBuffer;
+        WriteX-NewLine;
+        WriteX-SidewaysBuffer-Reset;
         if ($padded_length -gt $Global:BUFFER_WIDTH) {
             Write-Host $out -ForegroundColor $fg -BackgroundColor $bg;
         }
         else {
-            Write-Sideways -out $out -fg $fg -bg $bg;
+            WriteX-Sideways -out $out -fg $fg -bg $bg;
         }
         return;
     }
     Write-Host $out -ForegroundColor $fg -BackgroundColor $bg -NoNewline;
-    Write-CharRepeater -ch " " -count $Global:SIDEWAYS_LIST_PADDING;
+    WriteX-CharRepeater -ch " " -count $Global:SIDEWAYS_LIST_PADDING;
 }
 ###############################################################################
 ###############################################################################
-Init-ConsoleBuffer;
+WriteX-SidewaysBuffer-Init;
 ###############################################################################
 ###############################################################################

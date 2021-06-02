@@ -1,10 +1,17 @@
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
-function GitX-Branch {
-    Write-NewLine;
-    Write-Splash "git branch";
-    git branch;
+function WriteX-Splash([string] $msg, [switch] $invert) {
+    if ($invert.IsPresent) {
+        WriteX-HR;
+    }
+    Write-Host "== " -ForegroundColor DarkBlue -NoNewline;
+    Write-Host $msg -ForegroundColor Cyan -NoNewline;
+    Write-Host " ==" -ForegroundColor DarkBlue;
+
+    if (!$invert.IsPresent) {
+        WriteX-HR;
+    }
 }
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------

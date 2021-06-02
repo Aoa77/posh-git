@@ -1,5 +1,5 @@
 #######################
-# Console-Snapshop.ps1
+# ConsoleX-Snapshop.ps1
 #######################
 # source: https://devblogs.microsoft.com/powershell/colorized-capture-of-console-screen-in-html-and-rtf/
 # The script captures console screen buffer up to the current cursor position and returns it in HTML format.
@@ -15,7 +15,7 @@ function Normalize-HtmlColor ($color) {
     return $color
 }
 
-function Console-Snapshop([string] $logFile, [string] $fontSize) {
+function ConsoleX-Snapshop([string] $logFile, [string] $fontSize) {
     ###################
     AssertConsoleHost;
     ###################

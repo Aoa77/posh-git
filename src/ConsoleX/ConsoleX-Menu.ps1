@@ -1,4 +1,4 @@
-function Console-Menu () {
+function ConsoleX-Menu () {
     Param(
         [Parameter(Mandatory = $true)][String]$MenuTitle,
         [Parameter(Mandatory = $true)][array]$MenuOptions
@@ -8,7 +8,7 @@ function Console-Menu () {
     $EnterPressed = $false;
     while ($EnterPressed -eq $false) {
         Clear-Host;
-        Write-Splash $MenuTitle;
+        WriteX-Splash $MenuTitle;
         for ($i = 0; $i -le $MaxValue; $i++) {
             if ($i -eq $Selection) {
                 Write-Host -BackgroundColor Cyan -ForegroundColor Black "[ $($MenuOptions[$i]) ]";

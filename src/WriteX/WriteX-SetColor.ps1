@@ -1,18 +1,25 @@
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
-function Write-NewLine {
+function WriteX-SetColor {
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory = $false)]
-        [int] $count
+        [string] $value,
+        [Parameter(Mandatory = $false)]
+        [switch] $fg,
+        [Parameter(Mandatory = $false)]
+        [switch] $bg
     )
-    if ($count -eq 0) {
-        $count = 1;
+    if ([string]::IsNullOrWhiteSpace($value)) {
+        if ($fg.IsPresent) {
+            return "White";
+        }
+        if ($bg.IsPresent) {
+            return "Black";
+        }
     }
-    for ($i = 0; $i -lt $count; $i++) {
-        Write-Host "";
-    }
+    return $value;
 }
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------

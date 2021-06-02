@@ -1,4 +1,4 @@
-function Write-CharRepeater {
+function WriteX-CharRepeater {
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory = $false)]
@@ -10,8 +10,8 @@ function Write-CharRepeater {
         [Parameter(Mandatory = $false)]
         [string] $bg
     )
-    $fg = Set-Color -value $fg -fg;
-    $bg = Set-Color -value $bg -bg;
+    $fg = WriteX-SetColor -value $fg -fg;
+    $bg = WriteX-SetColor -value $bg -bg;
     $out = "";
     while ($out.Length -lt $count) {
         $out += $ch;

@@ -5,7 +5,7 @@
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
-function GitX-Config {
+function GitX-ZConfig {
     git config --global pager.branch false;
     git config --global diff.tool bc;
     git config --global difftool.bc.path "c:/Program Files/Beyond Compare 4/bcomp.exe";
@@ -47,5 +47,6 @@ function GitX-Config {
     Set-Alias -Force -Option AllScope -Scope Global -Value GitX-Status -Name "gs";
 }
 #-----------------------------------------------------------------------
+GitX-ZConfig
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------

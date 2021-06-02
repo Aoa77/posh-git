@@ -5,7 +5,7 @@ function Write-Gitx-Prompt {
 
     [string]$loc = (Get-Location);
     Write-Host $loc -ForegroundColor "DarkGreen";
-    Write-HR;
+    WriteX-HR;
 
     $repo = (GitX-Util-Repo-Root $loc);
     if ($null -ne $repo) {
@@ -14,17 +14,17 @@ function Write-Gitx-Prompt {
         $vcsStatus = $vcsStatus -creplace '(?m)\[(\d*?)m', '';
         $vcsStatus = $vcsStatus -creplace '(?m)\[|\]', '';
         [Console]::Title = $vcsStatus;
-        Write-CharRepeater " " -count 4;
-        Write-NewLine;
-        Write-HR;
+        WriteX-CharRepeater " " -count 4;
+        WriteX-NewLine;
+        WriteX-HR;
     }
 
     return $loc;
 }
 #-----------------------------------------------------------------------
 function PROMPT {
-    Init-ConsoleBuffer;
-    Write-NewLine 2;
+    WriteX-SidewaysBuffer-Init;
+    WriteX-NewLine 2;
 
     $loc = Write-Gitx-Prompt;
 
@@ -35,41 +35,41 @@ function PROMPT {
     $files = $dir.GetFiles();
 
 
-    Reset-SidewaysBuffer;
+    WriteX-SidewaysBuffer-Reset;
     $count = 0;
     foreach ($dir in $dirs) {
         if (++$count -gt $max) {
             break;
         }
-        Write-Sideways -out $dir.Name -fg "DarkMagenta";
+        WriteX-Sideways -out $dir.Name -fg "DarkMagenta";
     }
     if ($dirs.Count -gt 0) {
         if ($dirs.Count -gt $max) {
-            Write-Sideways -out "[more]" -fg "Magenta";
+            WriteX-Sideways -out "[more]" -fg "Magenta";
         }
-        Write-NewLine;
+        WriteX-NewLine;
     }
 
 
-    Reset-SidewaysBuffer;
+    WriteX-SidewaysBuffer-Reset;
     $count = 0;
     foreach ($file in $files) {
         if (++$count -gt $max) {
             break;
         }
-        Write-Sideways -out $file.Name -fg "DarkBlue";
+        WriteX-Sideways -out $file.Name -fg "DarkBlue";
     }
     if ($files.Count -gt 0) {
         if ($files.Count -gt $max) {
-            Write-Sideways -out "[more]" -fg "Blue";
+            WriteX-Sideways -out "[more]" -fg "Blue";
         }
-        Write-NewLine;
+        WriteX-NewLine;
     }
 
 
 
     if ($files.Count -gt 0 -OR $dirs.Count -gt 0) {
-        Write-HR;
+        WriteX-HR;
     }
     Write-Host '>:' -NoNewline;
     return ' ';
