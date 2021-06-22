@@ -7,7 +7,7 @@
 ;
 ;---------- Settings Toggles ----------
 enabledAdvancedParams	:= 0	;0 - disabled	, 1 - enabled
-skipStartupDialogs		:= 0	;0 - show		, 1 - skip
+skipStartupDialogs		:= 1	;0 - show		, 1 - skip
 ;---------- ---------------- ----------
 
 If GetKeyState("CapsLock","t")
@@ -80,9 +80,11 @@ GuiControl,, Ggd0, %gd%
 GuiControl,, Ggr0, %gr%
 
 Gui, Show,, GGGlide Parameters
-Return ; End of auto-execute section. The script is idle until the user does something.
 
-ButtonOK:
+; skip final dialog -------------------------
+; Return ; End of auto-execute section. The script is idle until the user does something.
+
+; ButtonOK:
     Gui, Submit ; Save the input from the user to each control's associated variable.
     time_to_travel:=Gtt
     speed_to_glide:=Gst

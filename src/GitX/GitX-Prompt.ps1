@@ -5,7 +5,6 @@ function Write-Gitx-Prompt {
 
     [string]$loc = (Get-Location);
     Write-Host $loc -ForegroundColor "DarkGreen";
-    WriteX-HR;
 
     $repo = (GitX-Util-Repo-Root $loc);
     if ($null -ne $repo) {
@@ -16,7 +15,6 @@ function Write-Gitx-Prompt {
         [Console]::Title = $vcsStatus;
         WriteX-CharRepeater " " -count 4;
         WriteX-NewLine;
-        WriteX-HR;
     }
 
     return $loc;
@@ -69,7 +67,7 @@ function PROMPT {
 
 
     if ($files.Count -gt 0 -OR $dirs.Count -gt 0) {
-        WriteX-HR;
+        #WriteX-NewLine;
     }
     Write-Host '>:' -NoNewline;
     return ' ';

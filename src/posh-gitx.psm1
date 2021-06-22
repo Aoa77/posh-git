@@ -44,6 +44,6 @@ Get-ChildItem -Path "$PSScriptRoot\$importing" -Filter "*.ahk" -Recurse | ForEac
 
 WriteX-SidewaysBuffer-Reset;
 WriteX-NewLine 1;
-WriteX-HR;
 Start-Sleep -Milliseconds 1;
-WriteX-Splash "Welcome to posh-gitX :)";
+WriteX-NewLine 2;
+WriteX-Splash "posh-gitX initialization complete :)";
