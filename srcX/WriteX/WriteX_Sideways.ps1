@@ -1,7 +1,3 @@
-
-
-###############################################################################
-###############################################################################
 [int] $Global:BUFFER_WIDTH = ($Host.UI.RawUI.WindowSize.Width - 3);
 [int] $Global:SIDEWAYS_LIST_PADDING = 2;
 [int] $Global:SIDEWAYS_BUFFER = 0;
