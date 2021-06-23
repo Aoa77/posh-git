@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
-[string] $Global:GITX_MAIN_BRANCH = "master";
+[string] $Global:GITX_MAIN_BRANCH = "???";
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
@@ -45,6 +45,10 @@ function GitX-ZConfig {
 
     Set-Alias -Force -Option AllScope -Scope Global -Value GitX-Remote -Name "gr";
     Set-Alias -Force -Option AllScope -Scope Global -Value GitX-Status -Name "gs";
+
+    Remove-Alias "cd" -Force -Scope Global -ErrorAction "SilentlyContinue";
+    Set-Alias -Force -Option AllScope -Scope Global -Value GitX-SetLocation -Name "cd";
+    Set-Alias -Force -Option AllScope -Scope Global -Value GitX-SetLocationPrevious -Name "cz";
 }
 #-----------------------------------------------------------------------
 GitX-ZConfig

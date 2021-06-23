@@ -1,9 +1,9 @@
 #SingleInstance, Force
 #Persistent
-SetTimer, PreventTeamsAwayIdle, 1000
+SetTimer, KeepAwake, 1000
 return
 
-PreventTeamsAwayIdle:
+KeepAwake:
     If ( A_TimeIdle > 300000 ) {
         Send, ^!2
     }

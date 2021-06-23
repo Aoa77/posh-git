@@ -1,13 +1,15 @@
-
-#-----------------------------------------------------------------------
-#-----------------------------------------------------------------------
-function Write-Gitx-Prompt {
+function GitX-Prompt {
 
     [string]$loc = (Get-Location);
     Write-Host $loc -ForegroundColor "DarkGreen";
 
     $repo = (GitX-Util-Repo-Root $loc);
     if ($null -ne $repo) {
+        git branch -r | ForEach-Object {
+            if ($_ -in ("main", "master")) {
+                $Global:GITX_MAIN_BRANCH = $_;
+            }
+        }
         [string] $vcsStatus = Write-VcsStatus;
         Write-Host $vcsStatus -NoNewline;
         $vcsStatus = $vcsStatus -creplace '(?m)\[(\d*?)m', '';
@@ -19,19 +21,17 @@ function Write-Gitx-Prompt {
 
     return $loc;
 }
-#-----------------------------------------------------------------------
 function PROMPT {
     WriteX-SidewaysBuffer-Init;
     WriteX-NewLine 2;
 
-    $loc = Write-Gitx-Prompt;
+    $loc = GitX-Prompt;
 
     [int] $max = 5;
     [int] $count = 0;
     $dir = [System.IO.DirectoryInfo]::new($loc);
     $dirs = $dir.GetDirectories();
     $files = $dir.GetFiles();
-
 
     WriteX-SidewaysBuffer-Reset;
     $count = 0;
@@ -48,7 +48,6 @@ function PROMPT {
         WriteX-NewLine;
     }
 
-
     WriteX-SidewaysBuffer-Reset;
     $count = 0;
     foreach ($file in $files) {
@@ -63,16 +62,9 @@ function PROMPT {
         }
         WriteX-NewLine;
     }
-
-
-
     if ($files.Count -gt 0 -OR $dirs.Count -gt 0) {
         #WriteX-NewLine;
     }
     Write-Host '>:' -NoNewline;
     return ' ';
 }
-#-------------------------------------------------------------------------------------------
-#-----------------------------------------------------------------------
-#-----------------------------------------------------------------------
-#-----------------------------------------------------------------------
