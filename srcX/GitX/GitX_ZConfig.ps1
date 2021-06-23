@@ -31,7 +31,7 @@ function GitX_ZConfig {
     Set-Alias -Force -Option AllScope -Scope Global -Value GitX_Pull -Name "gp";
     Set-Alias -Force -Option AllScope -Scope Global -Value GitX_PullForce -Name "gpf";
     Set-Alias -Force -Option AllScope -Scope Global -Value GitX_PullOrigin -Name "gpo";
-    Set-Alias -Force -Option AllScope -Scope Global -Value GitX_PullOrigin-Force -Name "gpof";
+    Set-Alias -Force -Option AllScope -Scope Global -Value GitX_PullOriginForce -Name "gpof";
 
     Set-Alias -Force -Option AllScope -Scope Global -Value GitX_Push -Name "gpx";
     Set-Alias -Force -Option AllScope -Scope Global -Value GitX_PushForce -Name "gpxf";

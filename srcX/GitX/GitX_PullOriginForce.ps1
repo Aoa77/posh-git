@@ -1,10 +1,10 @@
-function GitX_PullOrigin-Force {
+function GitX_PullOriginForce {
     [CmdletBinding()]
     Param (
         [alias("b")]
         [Parameter()]
         [string] $branch
     )
-    $branch = (GitX_UtilInput-Branch -b $branch);
+    $branch = (GitX_UtilInputBranch -b $branch);
     git pull origin $branch --force;
 }

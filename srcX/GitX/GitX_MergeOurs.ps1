@@ -6,6 +6,6 @@ function GitX_MergeOurs {
         [Parameter()]
         [string] $branch
     )
-    $branch = (GitX_UtilInput-Branch -b $branch);
+    $branch = (GitX_UtilInputBranch -b $branch);
     git merge -s ours $branch;
 }

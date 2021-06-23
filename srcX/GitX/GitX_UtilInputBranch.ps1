@@ -1,4 +1,4 @@
-function GitX_UtilInput-Branch {
+function GitX_UtilInputBranch {
     [CmdletBinding()]
     Param (
         [alias("b")]

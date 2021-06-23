@@ -1,4 +1,4 @@
-function GitX_UtilRepo-Root {
+function GitX_UtilRepoRoot {
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory = $true)]

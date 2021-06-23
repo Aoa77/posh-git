@@ -5,6 +5,6 @@ function GitX_PullOrigin {
         [Parameter()]
         [string] $branch
     )
-    $branch = (GitX_UtilInput-Branch -b $branch);
+    $branch = (GitX_UtilInputBranch -b $branch);
     git pull origin $branch;
 }

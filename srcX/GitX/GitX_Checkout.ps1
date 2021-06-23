@@ -5,6 +5,6 @@ function GitX_Checkout {
         [Parameter()]
         [string] $branch
     )
-    $branch = (GitX_UtilInput-Branch -b $branch);
+    $branch = (GitX_UtilInputBranch -b $branch);
     git checkout $branch;
 }
