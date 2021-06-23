@@ -5,9 +5,12 @@ function GitX-Prompt {
 
     $repo = (GitX-Util-Repo-Root $loc);
     if ($null -ne $repo) {
-        git branch -r | ForEach-Object {
-            if ($_ -in ("main", "master")) {
-                $Global:GITX_MAIN_BRANCH = $_;
+        $(git branch -r) | ForEach-Object {
+            $b = $_.Replace("origin/", "").Trim();
+            # Write-Host $b -ForegroundColor "DarkBlue";
+            if ($b -in ("main", "master")) {
+                # Write-Host $b -ForegroundColor "Cyan";
+                $Global:GITX_MAIN_BRANCH = $b;
             }
         }
         [string] $vcsStatus = Write-VcsStatus;
