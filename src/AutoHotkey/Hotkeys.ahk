@@ -11,9 +11,6 @@ ROA(_pname, _rname) {
     WinActivate, ahk_exe %_pname%
 }
 
-F7::Left
-F8::Right
-
 ; Toggle window transparency on the current window with Win+Escape.
 #Esc::
     WinGet, TransLevel, Transparent, A
