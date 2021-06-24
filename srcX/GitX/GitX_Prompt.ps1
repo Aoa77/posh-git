@@ -30,7 +30,7 @@ function PROMPT {
 
     $loc = GitX_Prompt;
 
-    [int] $max = 5;
+    [int] $max = 10;
     [int] $count = 0;
     $dir = [System.IO.DirectoryInfo]::new($loc);
     $dirs = $dir.GetDirectories();
