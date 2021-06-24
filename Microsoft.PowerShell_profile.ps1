@@ -14,4 +14,4 @@ $WarningPreference = `
 <#
 <\\-- import posh-gitx --//>
 #>
-Import-Module "~\posh-gitx\PROFILE-IMPORT.psm1" -Force;
+Import-Module "~\posh-gitx\POSHGITX_IMPORT.psm1" -Force;
