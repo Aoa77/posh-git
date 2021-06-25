@@ -1,5 +1,5 @@
 #######################
-# ConsoleX_Snapshop.ps1
+# ConsoleX_Snapshop
 #######################
 # source: https://devblogs.microsoft.com/powershell/colorized-capture-of-console-screen-in-html-and-rtf/
 # The script captures console screen buffer up to the current cursor position and returns it in HTML format.
