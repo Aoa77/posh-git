@@ -38,7 +38,7 @@ function POSHGITX_CONCAT {
 function POSHGITX_IMPORT {
     Import-Module -Force -Scope "Global" -Name "$(POSHGITX_CONCAT)";
 }
-function POSHGITX_CHILDREN([) {
+function POSHGITX_CHILDREN {
     $children = (Get-ChildItem -Path "$(POSHGITX_CONCAT)" -Filter "*.psm1");
     $children | ForEach-Object {
         LOG_DEBUG $_;
