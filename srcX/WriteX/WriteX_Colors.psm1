@@ -16,3 +16,4 @@ function WriteX_Colors {
     Write-Host "White" -ForegroundColor White;
     Write-Host "Yellow" -ForegroundColor Yellow;
 }
+WriteX_Colors;

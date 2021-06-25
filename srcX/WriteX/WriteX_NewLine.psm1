@@ -11,3 +11,4 @@ function WriteX_NewLine {
         Write-Host "";
     }
 }
+WriteX_NewLine 10;

@@ -1,6 +1,5 @@
 function WriteX_SetColor {
     [CmdletBinding()]
-    [OutputType([string])]
     Param (
         [Parameter(Mandatory = $false)]
         [string] $value,
@@ -19,3 +18,5 @@ function WriteX_SetColor {
     }
     return $value;
 }
+
+Write-Host "WriteX_SetColor" -ForegroundColor $(WriteX_SetColor "Cyan");

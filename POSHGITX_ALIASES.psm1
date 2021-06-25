@@ -28,7 +28,7 @@ function POSHGITX_ALIASES([bool] $removeMode) {
 }
 function POSHGITX_ALIAS ([bool] $removeMode, [string] $method, [string] $alias) {
     if ($removeMode) {
-        Remove-Alias $alias -Force -Scope Global -ErrorAction "SilentlyContinue";
+        Remove-Alias $alias -Force -Scope Global -ErrorAction SilentlyContinue;
     }
     else {
         Set-Alias -Force -Option AllScope -Scope Global -Value $method -Name $alias;

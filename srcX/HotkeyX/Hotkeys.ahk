@@ -21,7 +21,7 @@ ROA(_pname, _rname)
 ; Hit the PANIC button.
 #Esc::
     MSG("*** AutoHotkey PANIC ***", .25)
-    RunWait, pwsh.exe -NoProfile -NoExit -Command "& {.\ahk_PANIC.ps1}"
+    RunWait, pwsh.exe -NoProfile -NoExit -Command "& {.\ahk_PanicButton.ps1}"
 return
 
 ; Toggle window transparency on the current window with Win+Escape.
