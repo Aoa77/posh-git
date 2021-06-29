@@ -4,5 +4,5 @@ function GitX_CleanForce {
     Write-Host "#############################" -ForegroundColor DarkBlue;
     Write-Host "== GitX_CleanForce (fxd) =="    -ForegroundColor Red;
     Write-Host "#############################" -ForegroundColor DarkBlue;
-    GitX_Clean flags "fxd";
+    GitX_Clean -flags "fxd";
 }

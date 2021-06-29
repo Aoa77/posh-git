@@ -70,6 +70,12 @@ function POSHGITX_SETUP {
     POSHGITX_ACTION;
     POSHGITX_CHILDREN;
 
+    $POSHGITX_action = "importing SysX modules";
+    $POSHGITX_folder = "\srcX\SysX\";
+    $POSHGITX_file = "";
+    POSHGITX_ACTION;
+    POSHGITX_CHILDREN;
+
     $POSHGITX_action = "importing GitX modules";
     $POSHGITX_folder = "\srcX\GitX\";
     $POSHGITX_file = "";

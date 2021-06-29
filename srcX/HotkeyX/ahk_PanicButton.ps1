@@ -20,3 +20,4 @@ function ahk_PanicButton {
     Write-Host "";
     Write-Host "";
 }
+ahk_PanicButton;

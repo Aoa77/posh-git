@@ -1,4 +1,4 @@
-function GitX_SetLocation ([string] $location) {
+function SysX_SetLocation ([string] $location) {
     if ($location.Length -eq 0) {
         GitX_SetLocationLocalRepo;
         return;

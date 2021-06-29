@@ -1,4 +1,5 @@
 function POSHGITX_ALIASES([bool] $removeMode) {
+    # GitX aliases
     POSHGITX_ALIAS -removeMode $removeMode "GitX_Branch"                   "gb";
     POSHGITX_ALIAS -removeMode $removeMode "GitX_BranchAll"                "gba";
     POSHGITX_ALIAS -removeMode $removeMode "GitX_BranchPurge"              "gbp";
@@ -23,8 +24,11 @@ function POSHGITX_ALIASES([bool] $removeMode) {
     POSHGITX_ALIAS -removeMode $removeMode "GitX_PushQuick"                "gpxq";
     POSHGITX_ALIAS -removeMode $removeMode "GitX_Remote"                   "gr";
     POSHGITX_ALIAS -removeMode $removeMode "GitX_Status"                   "gs";
-    POSHGITX_ALIAS -removeMode $removeMode "GitX_SetLocation"              "cd";
-    POSHGITX_ALIAS -removeMode $removeMode "GitX_SetLocationPrevious"      "cz";
+
+    # SysX aliases
+    POSHGITX_ALIAS -removeMode $removeMode "SysX_GetLocation_EtcHosts"     "etc";
+    POSHGITX_ALIAS -removeMode $removeMode "SysX_SetLocation"              "cd";
+    POSHGITX_ALIAS -removeMode $removeMode "SysX_SetLocationPrevious"      "cz";
 }
 function POSHGITX_ALIAS ([bool] $removeMode, [string] $method, [string] $alias) {
     if ($removeMode) {

@@ -4,12 +4,12 @@ SetWorkingDir, %A_ScriptDir%
 
 CapsLock::
     MouseClick, left,,, 1, 0, D
-return
+Return
 
 ^+LButton::
     Click, Right
-return
+Return
 
 ^!LButton::
     Click, Middle
-return
+Return
