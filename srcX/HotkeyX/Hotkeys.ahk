@@ -34,22 +34,30 @@ Return
     }
 Return
 
-; Toggle "pin to top" on current window.
+
+; Togg  le "pin to top" on current window.
 #Insert::
     Winset, AlwaysOnTop, , A
+Return
+
+#p::
+    WinActivate, ahk_class VirtualConsoleClass
 Return
 
 ; Override Win+S for auto console refresh when developing in vscode.
 #s::
     Send, ^s
     Sleep, 88
-    Send, !{Tab}
+    WinActivate, ahk_class VirtualConsoleClass
     Sleep, 88
     Send, {Up}
     Sleep, 88
     Send, {Enter}
 Return
 
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Ctrl+Alt+? - Shortcuts to "Run or Activate" various programs.
 ^!0::
     ROA("C:\Program Files\AutoHotkey\WindowSpy.ahk", "C:\Program Files\AutoHotkey\WindowSpy.ahk")
@@ -67,7 +75,7 @@ Return
     ROA("outlook.exe", "outlook.exe")
 Return
 ^!2::
-    ROA("teams.exe", "C:\Users\aalbers\AppData\Local\Microsoft\Teams\Update.exe --processStart Teams.exe")
+    ROA("teams.exe", "~\AppData\Local\Microsoft\Teams\Update.exe --processStart Teams.exe")
 Return
 ^!3::
     ROA("code.exe", "C:\Program Files\Microsoft VS Code\Code.exe")

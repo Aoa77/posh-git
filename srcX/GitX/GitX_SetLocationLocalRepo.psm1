@@ -1,16 +1,14 @@
 function GitX_SetLocationLocalRepo {
-    $repos = [System.Collections.Generic.List[string]]::new();
-    $roots = ("C:\sc\", "C:\Users\Albert.Albers\");
-    $menu = (ConsoleX_Menu "GitX - choose root folder." $roots);
-    $root = $roots[$menu];
+    $root = "C:\work";
     $dirs = [System.IO.Directory]::GetDirectories($root);
+    $repos = [System.Collections.Generic.List[string]]::new();
     $dirs | ForEach-Object {
         $git = [System.IO.Directory]::GetDirectories($_, ".git");
         if ($git.Length -eq 1) {
             $repos.Add($_.Replace($root, ""));
         }
     };
-    $menu = (ConsoleX_Menu "GitX - choose local repository under `"$root`"" $repos);
+    $menu = (ConsoleX_Menu "GitX - choose repository folder." $repos);
     Push-Location;
     Set-Location $dirs[$menu];
 }

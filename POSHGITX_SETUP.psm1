@@ -1,7 +1,3 @@
-[string] $POSHGITX_action = "";
-[string] $POSHGITX_folder = "";
-[string] $POSHGITX_file = "";
-
 function LOG_INFO ([string] $msg) {
     Write-Information "INFO: $msg";
 }
@@ -17,87 +13,78 @@ function LOG_WARNING ([string] $msg) {
 function LOG_ERROR ([string] $msg) {
     Write-Error "$msg";
 }
-
-function POSHGITX_ACTION {
+function POSHGITX_BOOKEND ([string] $action, [switch] $altColor) {
+    $dark = "DarkGreen";
+    $color = "Green";
+    if ($altColor.IsPresent) {
+        $dark = "DarkMagenta";
+        $color = "Magenta";
+    }
+    Write-Host;
+    Write-Host "== " -ForegroundColor $dark -NoNewline;
+    Write-Host $action -ForegroundColor $color -NoNewline;
+    Write-Host " ==" -ForegroundColor $dark;
+}
+function POSHGITX_ACTION ([string] $action) {
     Write-Host;
     Write-Host "== " -ForegroundColor DarkBlue -NoNewline;
-    Write-Host $POSHGITX_action -ForegroundColor Cyan -NoNewline;
+    Write-Host $action -ForegroundColor Cyan -NoNewline;
     Write-Host " ==" -ForegroundColor DarkBlue;
 }
-function POSHGITX_BOOKEND {
-    Write-Host;
-    Write-Host "== " -ForegroundColor DarkGreen -NoNewline;
-    Write-Host $POSHGITX_action -ForegroundColor Green -NoNewline;
-    Write-Host " ==" -ForegroundColor DarkGreen;
+function POSHGITX_IMPORT ([string] $module) {
+    Import-Module -Force -Scope "Global" -Name $module;
 }
-function POSHGITX_CONCAT {
-    $concat = [string]::Concat($PSScriptRoot, $POSHGITX_folder, $POSHGITX_file);
-    LOG_DEBUG "POSHGITX_CONCAT: $concat";
-    return $concat;
-}
-function POSHGITX_IMPORT {
-    Import-Module -Force -Scope "Global" -Name "$(POSHGITX_CONCAT)";
-}
-function POSHGITX_CHILDREN {
-    $children = (Get-ChildItem -Path "$(POSHGITX_CONCAT)" -Filter "*.psm1");
-    $children | ForEach-Object {
-        LOG_DEBUG $_;
-        Import-Module -Force -Scope "Global" -Name "$_";
-        LOG_DEBUG;
+function POSHGITX_IMPORT_ADDONS ([string] $path) {
+    [System.IO.Directory]::GetFiles($path, "*.psm1") | ForEach-Object {
+        if (!$_.Contains("posh-git")) {
+            LOG_DEBUG $_;
+            Import-Module -Force -Scope "Global" -Name "$_";
+        }
     };
 }
-
+function POSHGITX_IMPORT_FOLDER ([string] $path) {
+    [System.IO.Directory]::GetFiles($path, "*.psm1") | ForEach-Object {
+        LOG_DEBUG $_;
+        Import-Module -Force -Scope "Global" -Name "$_";
+    };
+}
 function POSHGITX_SETUP {
-    $POSHGITX_action = "posh-gitX setup script";
-    POSHGITX_BOOKEND;
+    Set-Location            $PSScriptRoot;
+    POSHGITX_BOOKEND        "posh-gitX setup script";
+    POSHGITX_CORE;
+    Set-Location            "..\";
+    POSHGITX_ADDONS;
+    POSHGITX_BOOKEND        "posh-gitX setup complete :)";
+}
+function POSHGITX_CORE {
+    POSHGITX_action         "resetting alias definitions";
+    POSHGITX_IMPORT         ".\POSHGITX_ALIASES.psm1";
+    POSHGITX_ALIASES        $true;
 
-    $POSHGITX_action = "resetting alias definitions";
-    $POSHGITX_folder = "\";
-    $POSHGITX_file = "POSHGITX_ALIASES.psm1";
-    POSHGITX_ACTION;
-    POSHGITX_IMPORT;
-    POSHGITX_ALIASES $true;
+    POSHGITX_action         "importing the original posh-git";
+    POSHGITX_IMPORT         "$PSScriptRoot\src\posh-git.psd1";
 
-    $POSHGITX_action = "importing the original posh-git";
-    $POSHGITX_folder = "\src\";
-    $POSHGITX_file = "posh-git.psd1";
-    POSHGITX_ACTION;
-    POSHGITX_IMPORT;
+    POSHGITX_action         "importing WriteX modules";
+    POSHGITX_IMPORT_FOLDER  "$PSScriptRoot\srcX\WriteX\";
 
-    $POSHGITX_action = "importing WriteX modules";
-    $POSHGITX_folder = "\srcX\WriteX\";
-    $POSHGITX_file = "";
-    POSHGITX_ACTION;
-    POSHGITX_CHILDREN;
+    POSHGITX_action         "importing SysX modules";
+    POSHGITX_IMPORT_FOLDER  "$PSScriptRoot\srcX\SysX\";
 
-    $POSHGITX_action = "importing SysX modules";
-    $POSHGITX_folder = "\srcX\SysX\";
-    $POSHGITX_file = "";
-    POSHGITX_ACTION;
-    POSHGITX_CHILDREN;
+    POSHGITX_action         "importing GitX modules";
+    POSHGITX_IMPORT_FOLDER  "$PSScriptRoot\srcX\GitX\";
 
-    $POSHGITX_action = "importing GitX modules";
-    $POSHGITX_folder = "\srcX\GitX\";
-    $POSHGITX_file = "";
-    POSHGITX_ACTION;
-    POSHGITX_CHILDREN;
+    POSHGITX_action         "importing ConsoleX modules";
+    POSHGITX_IMPORT_FOLDER  "$PSScriptRoot\srcX\ConsoleX\";
 
-    $POSHGITX_action = "importing ConsoleX modules";
-    $POSHGITX_folder = "\srcX\ConsoleX\";
-    $POSHGITX_file = "";
-    POSHGITX_ACTION;
-    POSHGITX_CHILDREN;
+    POSHGITX_action         "importing HotkeyX modules";
+    POSHGITX_IMPORT_FOLDER  "$PSScriptRoot\srcX\HotkeyX\";
 
-    $POSHGITX_action = "importing HotkeyX modules";
-    $POSHGITX_folder = "\srcX\HotkeyX\";
-    $POSHGITX_file = "";
-    POSHGITX_ACTION;
-    POSHGITX_CHILDREN;
-
-    $POSHGITX_action = "creating alias definitions";
-    POSHGITX_ACTION;
-    POSHGITX_ALIASES;
-
-    $POSHGITX_action = "posh-gitX setup complete :)";
-    POSHGITX_BOOKEND;
+    POSHGITX_action         "creating alias definitions";
+    POSHGITX_ALIASES        $false;
+}
+function POSHGITX_ADDONS {
+    POSHGITX_action         "importing adjacent project add-on modules";
+    [System.IO.Directory]::GetDirectories($(Get-Location)) | ForEach-Object {
+        POSHGITX_IMPORT_ADDONS $_;
+    };
 }
