@@ -66,6 +66,7 @@ Return
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Ctrl+Alt+? - Shortcuts to "Run or Activate" various programs.
 ^!0::
+^!Numpad0::
     ROA("C:\Program Files\AutoHotkey\WindowSpy.ahk", "C:\Program Files\AutoHotkey\WindowSpy.ahk")
 Return
 ^!e::
@@ -78,29 +79,38 @@ Return
     Send, ^``
 Return
 ^!1::
+^!Numpad1::
     ROA("outlook.exe", "outlook.exe")
 Return
 ^!2::
+^!Numpad2::
     wmswitch("teams.exe")
 Return
 ^!3::
+^!Numpad3::
     ROA("code.exe", "C:\Program Files\Microsoft VS Code\Code.exe")
 Return
 ^!4::
+^!Numpad4::
     ROA("devenv.exe", "devenv.exe")
 Return
 ^!5::
+^!Numpad5::
     ROA("Docker Desktop.exe", "Docker Desktop.exe")
 Return
 ^!6::
+^!Numpad6::
     ROA("bcompare.exe", "bcompare.exe")
 Return
 ^!7::
+^!Numpad7::
     ROA("regexbuddy.exe", "regexbuddy.exe")
 Return
 ^!8::
+^!Numpad8::
     ROA("postman.exe", "C:\Users\aalbers\AppData\Local\Postman\Postman.exe")
 Return
 ^!9::
+^!Numpad9::
     ROA("C:\Program Files (x86)\Cisco\Cisco AnyConnect Secure Mobility Client\vpnui.exe", "C:\Program Files (x86)\Cisco\Cisco AnyConnect Secure Mobility Client\vpnui.exe")
 Return
