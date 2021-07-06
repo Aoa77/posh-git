@@ -38,7 +38,7 @@ function POSHGITX_IMPORT_ADDONS ([string] $path) {
     [System.IO.Directory]::GetFiles($path, "*.psm1") | ForEach-Object {
         if (!$_.Contains("posh-git")) {
             LOG_DEBUG $_;
-            Import-Module -Force -Scope "Global" -Name "$_";
+            Import-Module -Force -Scope "Global" -Name "$_" -ArgumentList "$PSScriptRoot\srcX\HotkeyX\Includes";
         }
     };
 }

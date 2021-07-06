@@ -2,6 +2,12 @@
 SendMode Input
 SetWorkingDir, %A_ScriptDir%
 
+#Include, C:\work\posh-gitx\srcX\HotkeyX\Includes\timer.ahk
+#Include, C:\work\posh-gitx\srcX\HotkeyX\Includes\mbox.ahk
+#Include, C:\work\posh-gitx\srcX\HotkeyX\Includes\wpin.ahk
+#Include, C:\work\posh-gitx\srcX\HotkeyX\Includes\wkill.ahk
+#Include, C:\work\posh-gitx\srcX\HotkeyX\Includes\wpswitch.ahk
+
 ; Displays a message box
 MSG(_message, _timeout)
 {
@@ -75,7 +81,7 @@ Return
     ROA("outlook.exe", "outlook.exe")
 Return
 ^!2::
-    ROA("teams.exe", "~\AppData\Local\Microsoft\Teams\Update.exe --processStart Teams.exe")
+    wmswitch("teams.exe")
 Return
 ^!3::
     ROA("code.exe", "C:\Program Files\Microsoft VS Code\Code.exe")
