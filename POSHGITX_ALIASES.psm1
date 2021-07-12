@@ -25,12 +25,20 @@ function PGX_ALIASES([bool] $removeMode) {
     PGX_ALIAS -removeMode $removeMode "GitX_PushForce"                "gpxf";
     PGX_ALIAS -removeMode $removeMode "GitX_PushQuick"                "gpxq";
     PGX_ALIAS -removeMode $removeMode "GitX_Remote"                   "gr";
+    PGX_ALIAS -removeMode $removeMode "GitX_RemoteChrome"             "grc";
     PGX_ALIAS -removeMode $removeMode "GitX_Status"                   "gs";
 
     # SysX aliases
     PGX_ALIAS -removeMode $removeMode "SysX_GetLocation_EtcHosts"     "etc";
     PGX_ALIAS -removeMode $removeMode "SysX_SetLocation"              "cd";
     PGX_ALIAS -removeMode $removeMode "SysX_SetLocationPrevious"      "cz";
+    
+    # program aliases
+    PGX_ALIAS -removeMode $removeMode `
+        "C:\Program Files\Google\Chrome\Application\chrome.exe" "chrome";
+}
+function GitX_RemoteChrome {
+    chrome $(gr);
 }
 function PGX_ALIAS ([bool] $removeMode, [string] $method, [string] $alias) {
     if ($removeMode) {
