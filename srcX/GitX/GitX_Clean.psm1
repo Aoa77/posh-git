@@ -11,5 +11,5 @@
     $commandExpression = "git clean -$flags";
     $invokeResult = '';
     Invoke-Expression -Command $commandExpression -OutVariable invokeResult;
-    Write-Information $invokeResult;
+    WX_INFO $invokeResult;
 }

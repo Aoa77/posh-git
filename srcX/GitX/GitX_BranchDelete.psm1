@@ -18,7 +18,7 @@
 #         [Parameter(Mandatory = $false)]
 #         [string] $remote_name
 #     )
-#     Write-Warning "Will delete the specified branch!";
+#     WX_WARN "Will delete the specified branch!";
 #     if ([string]::IsNullOrWhiteSpace($remoteName)) {
 #         $remoteName = "origin";
 #     }

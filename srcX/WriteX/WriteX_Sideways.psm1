@@ -3,15 +3,15 @@
 [int] $Global:SIDEWAYS_BUFFER = 0;
 
 function WriteX_SidewaysBufferReset {
-    Write-Warning $Global:BUFFER_WIDTH;
-    Write-Warning $Global:SIDEWAYS_LIST_PADDING;
-    Write-Warning $Global:SIDEWAYS_BUFFER;
+    Write-Debug $Global:BUFFER_WIDTH;
+    Write-Debug $Global:SIDEWAYS_LIST_PADDING;
+    Write-Debug $Global:SIDEWAYS_BUFFER;
     $Global:SIDEWAYS_BUFFER = $Global:BUFFER_WIDTH;
 }
 function WriteX_SidewaysBufferInit {
-    Write-Warning $Global:BUFFER_WIDTH;
-    Write-Warning $Global:SIDEWAYS_LIST_PADDING;
-    Write-Warning $Global:SIDEWAYS_BUFFER;
+    Write-Debug $Global:BUFFER_WIDTH;
+    Write-Debug $Global:SIDEWAYS_LIST_PADDING;
+    Write-Debug $Global:SIDEWAYS_BUFFER;
 
     $Global:BUFFER_WIDTH = ($Host.UI.RawUI.WindowSize.Width - 3);
     $Global:SIDEWAYS_LIST_PADDING = 2;
@@ -21,8 +21,6 @@ function WriteX_SidewaysBufferInit {
     $host.UI.RawUI.BufferSize = `
         New-Object System.Management.Automation.Host.Size($BUFF.Width, $BUFF.Height);
 }
-
-
 function WriteX_Sideways {
     [CmdletBinding()]
     Param (

@@ -24,12 +24,12 @@ Import-Module -Force -Scope "Global" `
     -Name "C:\work\posh-gitx\POSHGITX_SETUP.psm1";
 Write-Host;
 
-LOG_INFO "Testing LOG_* functions.";
-LOG_DEBUG "debug msg";
-LOG_VERBOSE "verbose msg";
-LOG_WARNING "warning msg";
-#LOG_ERROR "error msg";
+WX_INFO "Testing WX_* functions.";
+WX_DEBUG "debug msg";
+WX_VERBOSE "verbose msg";
+WX_WARNING "warning msg";
+#WX_ERROR "error msg";
 Write-Host;
 
-POSHGITX_SETUP;
+PGX_SETUP;
 Write-Host;
