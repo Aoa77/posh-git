@@ -26,6 +26,7 @@ function PGX_ALIASES([bool] $removeMode) {
     PGX_ALIAS -removeMode $removeMode "GitX_PushQuick"                "gpxq";
     PGX_ALIAS -removeMode $removeMode "GitX_Remote"                   "gr";
     PGX_ALIAS -removeMode $removeMode "GitX_RemoteChrome"             "grc";
+    PGX_ALIAS -removeMode $removeMode "GitX_Stash"                    "gsx";
     PGX_ALIAS -removeMode $removeMode "GitX_Status"                   "gs";
 
     # SysX aliases
@@ -39,6 +40,9 @@ function PGX_ALIASES([bool] $removeMode) {
 }
 function GitX_RemoteChrome {
     chrome $(gr);
+}
+function GitX_Stash {
+    git stash -u;
 }
 function PGX_ALIAS ([bool] $removeMode, [string] $method, [string] $alias) {
     if ($removeMode) {
