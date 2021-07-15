@@ -8,28 +8,17 @@ Set-ExecutionPolicy `
     -Scope LocalMachine `
     -Force;
 
-$InformationPreference = `
-    [System.Management.Automation.ActionPreference]::Continue;
 $DebugPreference = `
     [System.Management.Automation.ActionPreference]::Ignore;
 $ErrorActionPreference = `
     [System.Management.Automation.ActionPreference]::Stop;
+$InformationPreference = `
+    [System.Management.Automation.ActionPreference]::Continue;
 $VerbosePreference = `
     [System.Management.Automation.ActionPreference]::Ignore;
 $WarningPreference = `
-    [System.Management.Automation.ActionPreference]::Ignore;
+    [System.Management.Automation.ActionPreference]::Inquire;
 
 
-Import-Module -Force -Scope "Global" `
-    -Name "C:\work\posh-gitx\POSHGITX_SETUP.psm1";
-Write-Host;
-
-WX_INFO "Testing WX_* functions.";
-WX_DEBUG "debug msg";
-WX_VERBOSE "verbose msg";
-WX_WARN "warning msg";
-#WX_ERROR "error msg";
-Write-Host;
-
+Import-Module -Force -Scope "Global" -Name "C:\work\posh-gitx\POSHGITX_SETUP.psm1";
 PGX_SETUP;
-Write-Host;

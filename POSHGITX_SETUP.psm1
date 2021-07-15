@@ -94,6 +94,7 @@ function PGX_SETUP {
     PGX_CUSTOM_PROMPT;
     PGX_LASTDIR_NAV;
     PGX_BOOKEND        "posh-gitX setup complete :)";
+    WriteX_NewLine     2;
 }
 
 
