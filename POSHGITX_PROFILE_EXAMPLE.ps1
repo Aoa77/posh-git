@@ -27,7 +27,7 @@ Write-Host;
 WX_INFO "Testing WX_* functions.";
 WX_DEBUG "debug msg";
 WX_VERBOSE "verbose msg";
-WX_WARNING "warning msg";
+WX_WARN "warning msg";
 #WX_ERROR "error msg";
 Write-Host;
 

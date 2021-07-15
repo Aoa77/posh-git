@@ -1,20 +1,3 @@
-# PGX_SETUP.psm1
-# Write-(Debug|Error|Information|Verbose|Warning)
-function WX_DEBUG ([string] $msg) {
-    Write-Debug "$msg";
-}
-function WX_ERROR ([string] $msg) {
-    Write-Error "$msg";
-}
-function WX_INFO ([string] $msg) {
-    Write-Information "INFO: $msg";
-}
-function WX_VERBOSE ([string] $msg) {
-    Write-Verbose "$msg";
-}
-function WX_WARNING ([string] $msg) {
-    Write-Warning "$msg";
-}
 function PGX_ACTION ([string] $action) {
     Write-Host;
     Write-Host "== " -ForegroundColor DarkBlue -NoNewline;
@@ -111,4 +94,36 @@ function PGX_SETUP {
     PGX_CUSTOM_PROMPT;
     PGX_LASTDIR_NAV;
     PGX_BOOKEND        "posh-gitX setup complete :)";
+}
+
+
+
+
+# Write-(Debug|Error|Information|Verbose|Warning)
+function WX_DEBUG ([string] $msg) {
+    Write-Debug "$msg";
+}
+function WX_ERROR ([string] $msg) {
+    Write-Error "$msg";
+}
+function WX_INFO ([string] $msg) {
+    Write-Information "INFO: $msg";
+}
+function WX_VERBOSE ([string] $msg) {
+    Write-Verbose "$msg";
+}
+function WX_WARN ([string] $msg) {
+    Write-Warning "$msg";
+}
+function WX_ConfigTest([switch] $skipError) {
+    WriteX_NewLine 2;
+    WriteX_Splash("WX_ConfigTest");
+    WX_DEBUG "WX_DEBUG *** test";
+    if (!$skipError.IsPresent) {
+        WX_ERROR "WX_ERROR *** test";
+    }
+    WX_INFO "WX_INFO *** test.";
+    WX_VERBOSE "WX_VERBOSE *** test";
+    WX_WARN "WX_WARN *** test";
+    WriteX_NewLine 2;
 }

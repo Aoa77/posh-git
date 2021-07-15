@@ -3,16 +3,9 @@
 [int] $Global:SIDEWAYS_BUFFER = 0;
 
 function WriteX_SidewaysBufferReset {
-    Write-Debug $Global:BUFFER_WIDTH;
-    Write-Debug $Global:SIDEWAYS_LIST_PADDING;
-    Write-Debug $Global:SIDEWAYS_BUFFER;
     $Global:SIDEWAYS_BUFFER = $Global:BUFFER_WIDTH;
 }
 function WriteX_SidewaysBufferInit {
-    Write-Debug $Global:BUFFER_WIDTH;
-    Write-Debug $Global:SIDEWAYS_LIST_PADDING;
-    Write-Debug $Global:SIDEWAYS_BUFFER;
-
     $Global:BUFFER_WIDTH = ($Host.UI.RawUI.WindowSize.Width - 3);
     $Global:SIDEWAYS_LIST_PADDING = 2;
     WriteX_SidewaysBufferReset;

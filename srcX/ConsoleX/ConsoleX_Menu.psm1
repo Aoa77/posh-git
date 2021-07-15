@@ -49,7 +49,7 @@ function ConsoleX_Menu () {
         }
     }
 }
-function SwitchTo-Window {
+function SwitchTo_Window {
     Param(
         [string] $proc = "C:\Program Files (x86)\Citrix\ICA Client\concentr.exe",
         [string] $adm
